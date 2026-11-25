@@ -1,0 +1,10 @@
+services:
+  web:
+    build: ./web
+    ports:
+      - "8080:80"
+
+  storage:
+    build: ./storage
+    ports:
+      - "8081:80"

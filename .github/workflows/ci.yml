@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build web image
+        run: docker build -t smart-parking-web ./web
+
+      - name: Build storage image
+        run: docker build -t smart-parking-storage ./storage
+
+      - name: Validate Compose configuration
+        run: docker compose config
